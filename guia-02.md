@@ -1,13 +1,6 @@
-# Guía 2 - Índice
+# Guía 2
 
-- [Ejercicio 9](#ejercicio-09)
-- [Ejercicio 10](#ejercicio-10)
-- [Ejercicio 11](#ejercicio-11)
-- [Ejercicio 12](#ejercicio-12)
-- [Ejercicio 13](#ejercicio-13)
-- [Ejercicio 14](#ejercicio-14)
-
-## Ejercicio 9 {#ejercicio-09}
+## Ejercicio 9
 
 ### Enunciado
 
@@ -31,7 +24,7 @@ Writeln('El porcentaje de peso que perdió es de: ', PorcentajePerdido:4:2, '%')
 End.
 ```
 
-## Ejercicio 10 {#ejercicio-10}
+## Ejercicio 10
 
 ### Enunciado
 
@@ -55,7 +48,7 @@ Writeln('El volumen del cilindro es: ', Volumen:5:2);
 End.
 ```
 
-## Ejercicio 11 {#ejercicio-11}
+## Ejercicio 11
 
 ### Enunciado
 
@@ -87,7 +80,7 @@ Writeln('La velocidad del automóvil fue de ', Velocidad:6:2, 'km/h y el consumo
 End.
 ```
 
-## Ejercicio 12 {#ejercicio-12}
+## Ejercicio 12
 
 ### Enunciado
 
@@ -117,7 +110,7 @@ Writeln('Su sueldo bruto es de $', SueldoBruto:8:2, ' y su sueldo neto es de $',
 End.
 ```
 
-## Ejercicio 13 {#ejercicio-13}
+## Ejercicio 13
 
 ### Enunciado
 
@@ -152,7 +145,7 @@ Writeln('El puntaje obtenido fue de ', Puntaje);
 End.
 ```
 
-## Ejercicio 14 {#ejercicio-14}
+## Ejercicio 14
 
 ### Enunciado
 
