@@ -10,17 +10,19 @@
 ### Solución
 
 ```pascal
-Program Ejercicio9;
+Program calculopeso;
 Var
-    PesoInicial, PesoFinal, PorcentajePerdido: real;
+    PesoInicial, PesoFinal, PorcentajePerdido, Perdida: real;
 Begin
 Writeln('Ingrese su peso inicial');
 Readln(PesoInicial);
 Writeln('Ingrese su peso final');
 Readln(PesoFinal);
 
-PorcentajePerdido := ((PesoInicial - PesoFinal)/PesoInicial) * 100;
+Perdida := PesoInicial - PesoFinal;
+PorcentajePerdido := (Perdida* 100) / PesoInicial;
 Writeln('El porcentaje de peso que perdió es de: ', PorcentajePerdido:4:2, '%');
+Readln();
 End.
 ```
 
