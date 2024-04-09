@@ -81,3 +81,41 @@ begin
   Readln();
 end.
 ```
+
+## Ejercicio 3
+
+### Enunciado
+
+> Dado un conjunto de números enteros distintos de cero, informar el menor y el mayor de ellos. 
+
+### Solución
+
+```pascal
+program Project1;
+Var
+   CantidadNumeros, Contador: byte;
+   Numero, Mayor, Menor: integer;
+begin
+  Writeln('Ingrese cantidad de numeros');
+  Readln(CantidadNumeros);
+  Menor := 9999;
+  Mayor := -9999;
+
+  Contador := 0;
+  while Contador < CantidadNumeros do
+        begin
+          Writeln('Ingrese un numero');
+          Readln(Numero);
+          if Numero <> 0 then
+             if Numero > Mayor then
+                Mayor := Numero;
+             if Numero < Menor then
+                Menor := Numero;
+          Contador := Contador + 1;
+        end;
+
+  Writeln('El numero mayor es: ', Mayor);
+  Writeln('El numero menor es: ', Menor);
+  Readln();
+end.
+```
