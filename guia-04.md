@@ -1,4 +1,4 @@
-# Guía 3
+# Guía 4
 
 ## Ejercicio 1
 
@@ -116,6 +116,40 @@ begin
 
   Writeln('El numero mayor es: ', Mayor);
   Writeln('El numero menor es: ', Menor);
+  Readln();
+end.
+```
+
+## Ejercicio 4
+
+### Enunciado
+
+> Dado un conjunto de números enteros distintos de cero, informar el mayor múltiplo de 3.
+
+### Solución
+
+```pascal
+program Project1;
+Var
+   CantidadNumeros, Contador: byte;
+   Numero, Mayor: integer;
+begin
+  Writeln('Ingrese cantidad de numeros');
+  Readln(CantidadNumeros);
+  Mayor := -9999;
+
+  Contador := 0;
+  while Contador < CantidadNumeros do
+        begin
+          Writeln('Ingrese un numero');
+          Readln(Numero);
+          if (Numero MOD 3 = 0) then
+             if Numero > Mayor then
+                Mayor := Numero;
+          Contador := Contador + 1;
+        end;
+
+  Writeln('El numero multiplo de 3 mayor es: ', Mayor);
   Readln();
 end.
 ```
