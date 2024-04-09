@@ -38,3 +38,46 @@ begin
   Readln();
 end.
 ```
+
+## Ejercicio 2
+
+### Enunciado
+
+> Leer dos valores reales A y B (A < B), luego N números reales, calcular e informar el
+> promedio de los que pertenecen al intervalo [A, B]
+
+### Solución
+
+```pascal
+program Project1;
+Var
+   CantidadNumeros, Contador, CantidadIntervalo: byte;
+   Numero, SumaIntervalo: real;
+   A, B: real;
+begin
+  Writeln('Ingrese un valor real');
+  Readln(A);
+  Writeln('Ingrese otro valor real mayor que el anterior');
+  Readln(B);
+  Writeln('Ingrese cantidad de numeros');
+  Readln(CantidadNumeros);
+
+  Contador := 0;
+  CantidadIntervalo := 0;
+  SumaIntervalo := 0;
+  while Contador < CantidadNumeros do
+        begin
+          Writeln('Ingrese un numero');
+          Readln(Numero);
+          if (Numero >= A) AND (Numero <= B) then
+             begin
+             SumaIntervalo := SumaIntervalo + Numero;
+             CantidadIntervalo := CantidadIntervalo + 1;
+             end;
+          Contador := Contador + 1;
+        end;
+
+  Writeln('El promedio es: ', (SumaIntervalo / CantidadIntervalo):5:2);
+  Readln();
+end.
+```
