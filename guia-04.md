@@ -197,3 +197,61 @@ begin
   Readln();
 end.
 ```
+
+## Ejercicio 6
+
+### Enunciado
+
+> Dado un conjunto de figuras geométricas y sus respectivas áreas:
+> - Figura ( ‘T’=triángulo, ‘C’=cuadrado, ‘R’=rectángulo, ‘F’=Fin de datos
+> - Area
+> Informar:
+> a) Porcentaje de cada tipo de figura.
+> b)Figura con mayor área (suponer única).
+
+### Solución
+
+```pascal
+program Project1;
+Var
+   CantidadFiguras, Contador: byte;
+   Superficie, SuperficieMayor, Alto, Ancho: real;
+   Figura: char;
+begin
+  Writeln('Ingrese cantidad de figuras');
+  Readln(CantidadFiguras);
+
+  Contador := 0;
+  SuperficieMayor := 0;
+  Superficie := 0;
+  while Contador < CantidadFiguras do
+        begin
+          Writeln('Ingrese una figura ("T", "C", "R", "F")');
+          Readln(Figura);
+          Figura := Upcase(Figura);
+
+          if Figura <> 'F' then
+             begin
+             Writeln('Ingrese el alto');
+             Readln(Alto);
+             Writeln('Ingrese el ancho');
+             Readln(Ancho);
+             end;
+
+          case Figura of
+               'T': Superficie := (Ancho * Alto) / 2;
+               'C': Superficie := Ancho * 2;
+               'R': Superficie := Ancho * Alto;
+               'F': Break;
+          end;
+
+          if (Superficie > SuperficieMayor) then
+             SuperficieMayor := Superficie;
+
+          Contador := Contador + 1;
+        end;
+
+  Writeln('La superficie mayor es: ', SuperficieMayor:8:2);
+  Readln();
+end.
+```
