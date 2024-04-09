@@ -295,3 +295,36 @@ begin
   Readln();
 end.
 ```
+
+## Ejercicio 8
+
+### Enunciado
+
+>  Leer números desde un archivo e informar la cantidad de veces en que un número es igual al que le antecede.
+
+### Solución
+
+```pascal
+program Project1;
+Var
+   Numero, Auxiliar, Contador: byte;
+   Archivo: text;
+begin
+  Assign(Archivo, 'numeros.txt');
+  Reset(Archivo);
+  Readln(Archivo, Numero);
+
+  Contador := 0;
+  while Not EOF(Archivo) do
+        begin
+          Readln(Archivo, Auxiliar);
+          if (Numero = Auxiliar) then
+             Contador := Contador + 1;
+          Numero := Auxiliar;
+        end;
+
+  Writeln('Se repiten: ', Contador, ' veces');
+  Close(Archivo);
+  Readln();
+end.
+```
