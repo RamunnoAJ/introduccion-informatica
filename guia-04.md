@@ -153,3 +153,47 @@ begin
   Readln();
 end.
 ```
+
+## Ejercicio 5
+
+### Enunciado
+
+> Ingresar largo y ancho de un conjunto de rectángulos, para cada uno calcular e informar la
+> superficie. Detener el proceso cuando se hayan ingresado N datos o el perímetro del
+> rectángulo ingresado supere un valor X. (N y X son valores ingresados por teclado).
+
+### Solución
+
+```pascal
+program Project1;
+Var
+   CantidadRectangulos, Contador: byte;
+   Superficie, Perimetro, PerimetroMaximo, Alto, Ancho: real;
+begin
+  Writeln('Ingrese cantidad de rectangulos');
+  Readln(CantidadRectangulos);
+  Writeln('Ingrese el perimetro maximo');
+  Readln(PerimetroMaximo);
+
+  Contador := 0;
+  while Contador < CantidadRectangulos do
+        begin
+          Writeln('Ingrese alto del rectangulo');
+          Readln(Alto);
+          Writeln('Ingrese ancho del rectangulo');
+          Readln(Ancho);
+          Perimetro := Ancho * 2 + Alto * 2;
+          Superficie := Ancho * Alto;
+
+          Writeln('La superficie es: ', Superficie:8:2);
+          if (Perimetro > PerimetroMaximo) then
+             begin
+             Writeln('Superaste el perimetro maximo');
+             Break;
+             end;
+          Contador := Contador + 1;
+        end;
+
+  Readln();
+end.
+```
