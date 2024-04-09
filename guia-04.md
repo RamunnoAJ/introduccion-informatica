@@ -328,3 +328,47 @@ begin
   Readln();
 end.
 ```
+
+## Ejercicio 9
+
+### Enunciado
+
+> Rehacer el ejercicio 4 (leyendo desde archivo) Ingresar un valor entero X por teclado y
+> luego:
+> a) Informar el mayor múltiplo de X, poniendo un cartel aclaratorio si no existiera.
+> b) Generar un Archivo ‘Multiplo.TXT’ con todos los múltiplos de X que hubiera.
+
+### Solución
+
+```pascal
+program Project1;
+Var
+   Numero, Mayor: integer;
+   ArchivoE, ArchivoS: text;
+begin
+  Assign(ArchivoE, 'numeros.txt');
+  Reset(ArchivoE);
+  Assign(ArchivoS, 'salida.txt');
+  Rewrite(ArchivoS);
+
+  Readln(ArchivoE, Numero);
+  Mayor := -9999;
+
+  while Not EOF(ArchivoE) do
+        begin
+          Readln(ArchivoE, Numero);
+          if (Numero MOD 3 = 0) then
+             begin
+                 Writeln(ArchivoS, Numero);
+                 if (Numero > Mayor) then
+                    Mayor := Numero;
+             end;
+        end;
+  if (Mayor = -9999) then
+     Writeln(ArchivoS, 'No existe ningun multiplo de 3');
+
+  Close(ArchivoE);
+  Close(ArchivoS);
+  Readln();
+end.
+```
