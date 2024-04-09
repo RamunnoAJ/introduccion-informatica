@@ -255,3 +255,43 @@ begin
   Readln();
 end.
 ```
+
+## Ejercicio 7
+
+### Enunciado
+
+> Rehacer el ejercicio 2. Ahora los datos están en el archivo ‘Numeros.TXT’ donde en la primer
+> línea se encuentran los valores de A y B (con A < B), no se sabe cuántos números reales hay,
+> calcular e informar el promedio de los que pertenecen al intervalo [A, B]
+
+### Solución
+
+```pascal
+program Project1;
+Var
+   CantidadIntervalo: byte;
+   Numero, SumaIntervalo: real;
+   A, B: real;
+   Archivo: text;
+begin
+  Assign(Archivo, 'numeros.txt');
+  Reset(Archivo);
+  Readln(Archivo, A, B);
+
+  CantidadIntervalo := 0;
+  SumaIntervalo := 0;
+  while Not EOF(Archivo) do
+        begin
+          Readln(Archivo, Numero);
+          if (Numero >= A) AND (Numero <= B) then
+             begin
+             SumaIntervalo := SumaIntervalo + Numero;
+             CantidadIntervalo := CantidadIntervalo + 1;
+             end;
+        end;
+
+  Writeln('El promedio es: ', (SumaIntervalo / CantidadIntervalo):5:2);
+  Close(Archivo);
+  Readln();
+end.
+```
