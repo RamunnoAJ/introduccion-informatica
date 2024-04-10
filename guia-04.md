@@ -86,7 +86,7 @@ end.
 
 ### Enunciado
 
-> Dado un conjunto de números enteros distintos de cero, informar el menor y el mayor de ellos. 
+> Dado un conjunto de números enteros distintos de cero, informar el menor y el mayor de ellos.
 
 ### Solución
 
@@ -203,11 +203,12 @@ end.
 ### Enunciado
 
 > Dado un conjunto de figuras geométricas y sus respectivas áreas:
+>
 > - Figura ( ‘T’=triángulo, ‘C’=cuadrado, ‘R’=rectángulo, ‘F’=Fin de datos
 > - Area
-> Informar:
-> a) Porcentaje de cada tipo de figura.
-> b)Figura con mayor área (suponer única).
+>   Informar:
+>   a) Porcentaje de cada tipo de figura.
+>   b)Figura con mayor área (suponer única).
 
 ### Solución
 
@@ -300,7 +301,7 @@ end.
 
 ### Enunciado
 
->  Leer números desde un archivo e informar la cantidad de veces en que un número es igual al que le antecede.
+> Leer números desde un archivo e informar la cantidad de veces en que un número es igual al que le antecede.
 
 ### Solución
 
@@ -371,4 +372,61 @@ begin
   Close(ArchivoS);
   Readln();
 end.
+```
+
+## Ejercicio 10
+
+### Enunciado
+
+> Leer un número, calcular e informar la suma de los números naturales hasta ese número.
+
+### Solución
+
+```pascal
+Program Ejercicio10;
+Var
+    Numero: byte;
+    Acumulador: word;
+Begin
+    Writeln('Ingrese la cantidad de numeros a ingresar');
+    Readln(Numero);
+
+    Acumulador := 0;
+    for i := 1 to Numero do
+        Acumulador := Acumulador + i;
+
+    Writeln(Acumulador);
+End.
+```
+
+## Ejercicio 11
+
+### Enunciado
+
+> Leer N números enteros, calcular el mínimo de los impares
+> y la cantidad de repeticiones del mismo.
+
+### Solución
+
+```pascal
+Program Ejercicio10;
+Var
+    N: word;
+    Minimo, Numero: integer;
+Begin
+    Writeln('Ingrese la cantidad de numeros a ingrear');
+    Readln(N);
+
+    Minimo := 9999;
+    for i := 1 to N do
+        begin
+            Writeln('Ingrese un numero entero');
+            Readln(Numero);
+
+            if Numero < Minimo then
+                Minimo := Numero;
+        end;
+
+    Writeln(Minimo);
+End.
 ```
