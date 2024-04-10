@@ -430,3 +430,19 @@ Begin
     Writeln(Minimo);
 End.
 ```
+
+## Ejercicio 12
+
+### Enunciado
+
+> Un comercio realiza el 10% de descuento por ventas mayores a $1000.
+> Leer la cantidad de ventas realizadas, y luego el importe de cada una,
+> calcular e informar el importe total que se otorgo en concepto de descuento
+> y la cantidad de ventas que no tuvieron dicho beneficio.
+> Cómo cambiaria el código si en vez de 10% y $ 1000,
+> dichos valores fueran variables (igual para todas las ventas).
+
+### Solución
+
+```pascal
+```
