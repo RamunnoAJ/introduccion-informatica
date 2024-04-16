@@ -410,7 +410,7 @@ End.
 ### Solución
 
 ```pascal
-Program Ejercicio10;
+Program Ejercicio11;
 Var
     N, i: word;
     Minimo, Numero: integer;
@@ -447,4 +447,48 @@ End.
 ### Solución
 
 ```pascal
+Program Ejercicio12;
+Var
+    VentasRealizadas, VentasSinBeneficio, Descuento: byte;
+    Importe, ImporteTotal, ImporteMinimo, ImporteDescontado: real;
+    Respuesta: char;
+Begin
+    Writeln('Ingrese el importe minimo para obtener un descuento');
+    Readln(ImporteMinimo);
+    Writeln('Ingrese el descuento que desea aplicar');
+    Readln(Descuento);
+
+    Respuesta := 'N';
+    VentasRealizadas := 0;
+    VentasSinBeneficio := 0;
+    Importe := 0;
+    ImporteTotal := 0;
+    ImporteDescontado := 0;
+    repeat
+          Writeln('Ingrese un importe');
+          Readln(Importe);
+
+          VentasRealizadas := VentasRealizadas + 1;
+          if (Importe >= ImporteMinimo) then
+             begin
+             Importe := Importe * 0.9;
+             ImporteDescontado := ImporteDescontado + (Importe * 0.1);
+             end
+             else
+                 VentasSinBeneficio := VentasSinBeneficio + 1;
+
+          ImporteTotal := ImporteTotal + Importe;
+
+          Writeln('¿Desea continuar ingresando importes?');
+          Writeln('[S] - Si');
+          Writeln('[N] - No');
+          Readln(Respuesta);
+          Respuesta := UpCase(Respuesta);
+    until Respuesta = 'N';
+
+    Writeln('el importe total es: ', ImporteTotal:8:2);
+    Writeln('la cantidad de ventas es: ', VentasRealizadas);
+    Writeln('la cantidad de ventas sin beneficio es: ', VentasSinBeneficio);
+    Readln();
+End.
 ```
