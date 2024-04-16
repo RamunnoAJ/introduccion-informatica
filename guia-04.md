@@ -492,3 +492,66 @@ Begin
     Readln();
 End.
 ```
+
+## Ejercicio 13
+
+### Enunciado
+
+> Para N personas, ingresar sexo ( F : femenino, M : masculino) y edad (en años).
+> Calcular e informar:
+> a) Porcentaje de cada sexo.
+> b) Promedio general de las edades ingresadas, el promedio de edad de los varones y el
+> promedio de edad de las mujeres. ¿Qué control puede hacer para darle robustez al
+> algoritmo y evitar que cancele por división por 0?.
+
+### Solución
+
+```pascal
+Program Ejercicio13;
+Var
+   N, Edad, i, ContadorV, ContadorM: byte;
+   Sexo: char;
+   PromedioV, PromedioM, Promedio: real;
+   SumV, SumM: word;
+Begin
+    Writeln('Ingrese la cantidad de personas que quiere ingresar');
+    Readln(N);
+
+    ContadorV := 0; ContadorM := 0; PromedioV := 0; PromedioM := 0; SumV := 0; SumM := 0; Promedio := 0;
+
+    for i := 1 to N do
+        begin
+          repeat
+                Writeln('Ingrese el sexo de la persona masculino o femenino (M o F)');
+                Readln(Sexo);
+                Sexo := UpCase(Sexo);
+          until (Sexo = 'M') OR (Sexo = 'F');
+
+          Writeln('Ingrese la edad');
+          Readln(Edad);
+
+          if (Sexo = 'M') then
+             begin
+             ContadorV := ContadorV + 1;
+             SumV := SumV + Edad;
+             end
+             else
+                 begin
+                 ContadorM := ContadorM + 1;
+                 SumM := SumM + Edad;
+                 end;
+        end;
+    if (ContadorV > 0) then
+             PromedioV := SumV / ContadorV;
+          if (ContadorM > 0) then
+             PromedioM := SumM / ContadorM;
+
+          Promedio := (SumV + SumM) / (ContadorM + ContadorV);
+
+    Writeln('El promedio general es: ', Promedio:8:2);
+    Writeln('El promedio de varones es: ', PromedioV:8:2);
+    Writeln('El promedio de mujeres es: ', PromedioM:8:2);
+
+    Readln();
+End.
+```
