@@ -574,7 +574,7 @@ End.
 ### Solución
 
 ```pascal
-Program Ejercicio13;
+Program Ejercicio14;
 Var
    Arch: text;
    N, i, ContadorLibre: byte;
@@ -590,10 +590,12 @@ Begin
     for i := 1 to N do
         begin
         Readln(Arch, Monto, aux, Codigo);
+
         case Codigo of
              'L': begin
                   TotalLibre := TotalLibre + Monto;
                   ContadorLibre := ContadorLibre + 1;
+                  ImporteFinal := Monto;
                   Writeln('Monto a pagar en libre es: ', Monto:8:2);
                   end;
              'P': begin
@@ -607,6 +609,7 @@ Begin
                   Descuento := Descuento + (Monto - ImporteFinal);
                   end;
              'A': begin
+                  ImporteFinal := Monto;
                   if (Monto > X) then
                      ImporteFinal := Monto * 0.95;
                   Writeln('Monto a pagar en accesorios es: ', ImporteFinal:8:2);
@@ -623,7 +626,7 @@ Begin
     Writeln('Total de operaciones realizadas en venta libre: ', ContadorLibre);
     Writeln('Importe total en venta libre: ', TotalLibre:8:2);
     Writeln('Importe total bonificado en descuentos es: ', Descuento:8:2);
-    Writeln(MontoMaximo:8:2, CodigoMaximo);
+    Writeln(CodigoMaximo, MontoMaximo:8:2);
 
     Close(Arch);
     Readln();
