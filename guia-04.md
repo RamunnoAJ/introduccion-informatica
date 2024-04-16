@@ -386,7 +386,7 @@ end.
 Program Ejercicio10;
 Var
     Numero: byte;
-    Acumulador: word;
+    Acumulador, i: word;
 Begin
     Writeln('Ingrese la cantidad de numeros a ingresar');
     Readln(Numero);
@@ -396,6 +396,7 @@ Begin
         Acumulador := Acumulador + i;
 
     Writeln(Acumulador);
+    Readln();
 End.
 ```
 
@@ -411,7 +412,7 @@ End.
 ```pascal
 Program Ejercicio10;
 Var
-    N: word;
+    N, i: word;
     Minimo, Numero: integer;
 Begin
     Writeln('Ingrese la cantidad de numeros a ingrear');
@@ -427,7 +428,8 @@ Begin
                 Minimo := Numero;
         end;
 
-    Writeln(Minimo);
+    Writeln('El numero mas chico es: ', Minimo);
+    Readln();
 End.
 ```
 
