@@ -666,4 +666,68 @@ End.
 ### Solución
 
 ```pascal
+Program Ejercicio14;
+Var
+   Categoria: char;
+   NivelRiesgo, Pulsaciones, CantA, CantB, CantC, CantTotal, CantRiesgo, VelMax, ContCorredoresARiesgo1: byte;
+   SumVelMax: word;
+   Nombre: string[50];
+Begin
+    CantA := 0; CantB := 0; CantC := 0; CantTotal := 0; CantRiesgo := 0; ContCorredoresARiesgo1 := 0; SumVelMax := 0;
+
+    Writeln('Ingrese su nombre');
+    Readln(Nombre);
+
+    repeat
+          Writeln('Ingrese la velocidad maxima alcanzada');
+          Readln(VelMax);
+          Writeln('Ingrese sus pulsaciones');
+          Readln(Pulsaciones);
+
+          SumVelMax := SumVelMax + VelMax;
+
+          case Pulsaciones of
+               0..120: NivelRiesgo := 1;
+               121..160: NivelRiesgo := 2;
+               else begin
+                    NivelRiesgo := 3;
+                    CantRiesgo := CantRiesgo + 1;
+                    end;
+               end;
+
+          case VelMax of
+               0..40: begin
+                      Categoria := 'A';
+                      CantA := CantA + 1;
+                      if NivelRiesgo = 1 then
+                         ContCorredoresARiesgo1 := ContCorredoresARiesgo1 + 1;
+                      end;
+               41..49: begin
+                       Categoria := 'B';
+                       CantB := CantB + 1;
+                       end;
+               else begin
+                    Categoria := 'C';
+                    CantC := CantC + 1;
+                    end;
+               end;
+
+
+          Writeln(Nombre, ' esta en la categoria ', Categoria, ' y su nivel de riesgo es ', NivelRiesgo);
+          Writeln('Ingrese otro nombre o fin de datos (***)');
+          Readln(Nombre);
+    until Nombre = '***';
+
+    CantTotal := CantA + CantB + CantC;
+
+    Writeln('En la categoria A hay: ', CantA, ' participantes');
+    Writeln('En la categoria B hay: ', CantB, ' participantes');
+    Writeln('En la categoria C hay: ', CantC, ' participantes');
+    Writeln('El porcentaje de participantes cuyo nivel de riesgo es 3 es: ', ((CantRiesgo) * 100 / CantTotal):8:2);
+
+    Writeln('El promedio de velocidades maximas es: ', (SumVelMax / CantTotal):8:2);
+    Writeln('En la categoria A con nivel de riesgo 1 hay: ', ContCorredoresARiesgo1, ' corredores');
+
+    Readln();
+End.
 ```
