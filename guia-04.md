@@ -632,3 +632,38 @@ Begin
     Readln();
 End.
 ```
+
+## Ejercicio 15
+
+### Enunciado
+
+> En un entrenamiento de ciclismo cada participante, efectúa una vuelta a la pista y al
+> terminar la misma se registra el nombre (*** fin de datos), la velocidad máxima alcanzada y
+> sus pulsaciones.
+> Se pide desarrollar un programa Pascal que lea de teclado los datos mencionados, obtenga e informe:
+>  La categoría de cada ciclista y su nivel de riesgo
+>  La cantidad de participantes en cada categoría
+>  El porcentaje de participantes cuyo de nivel de riesgo es 3
+> Calcule CATEGORIA y NIVEL DE RIESGO según las siguientes tablas:
+> | Pulsaciones     | Nivel de Riesgo |
+> | --------------- | --------------- |
+> | hasta 120       | 1               |
+> | entre 121 y 160 | 2               |
+> | mas de 160      | 3               |
+>
+> | Velocidad Maxima      | Categoria |
+> | --------------------  | --------- |
+> | Mas de 50km/h         | A         |
+> | Entre 40km/h y 49km/h | B         |
+> | Menos de 40km/h       | C         |
+>
+> Como modificaría el código si se pidiera además
+> a. Promedio de velocidades máximas
+> b. Cantidad de corredores de categoría A con nivel de riesgo 1
+> c. Informar categorías sin participantes 
+
+
+### Solución
+
+```pascal
+```
