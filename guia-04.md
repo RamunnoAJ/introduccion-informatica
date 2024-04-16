@@ -555,3 +555,77 @@ Begin
     Readln();
 End.
 ```
+
+## Ejercicio 14
+
+### Enunciado
+
+> Leer las N ventas efectuadas por una farmacia Social. Por cada una se ingresa el monto y un código indicador del rubro:
+> L - venta libre
+> M - medicamentos (23% de descuento)
+> P - perfumería (promoción 10% de descuento).
+> A - accesorios (promoción, si el monto supera $X corresponde un 5% de descuento)
+> Se pide informar:
+> 1. por cada venta el importe a pagar (con el descuento efectuado, si corresponde)
+> 2. Importe total bonificado en concepto de descuentos
+> 3. Total de operaciones e importe total en venta libre
+> 4. Monto de venta máximo y a que rubro pertenece
+
+### Solución
+
+```pascal
+Program Ejercicio13;
+Var
+   Arch: text;
+   N, i, ContadorLibre: byte;
+   X, Monto, TotalLibre, Descuento, ImporteFinal, MontoMaximo: real;
+   Codigo, aux, CodigoMaximo: char;
+Begin
+    Assign(Arch, 'farmacia.txt');
+    Reset(Arch);
+    Readln(Arch, N);
+    Readln(Arch, X);
+
+    TotalLibre := 0; ContadorLibre := 0; Descuento := 0; ImporteFinal := 0; MontoMaximo := -9999;
+    for i := 1 to N do
+        begin
+        Readln(Arch, Monto, aux, Codigo);
+        case Codigo of
+             'L': begin
+                  TotalLibre := TotalLibre + Monto;
+                  ContadorLibre := ContadorLibre + 1;
+                  Writeln('Monto a pagar en libre es: ', Monto:8:2);
+                  end;
+             'P': begin
+                  ImporteFinal := Monto * 0.9;
+                  Writeln('Monto a pagar en perfumeria es: ', ImporteFinal:8:2);
+                  Descuento := Descuento + (Monto - ImporteFinal);
+                  end;
+             'M': begin
+                  ImporteFinal := Monto * 0.9;
+                  Writeln('Monto a pagar en medicamento es: ', ImporteFinal:8:2);
+                  Descuento := Descuento + (Monto - ImporteFinal);
+                  end;
+             'A': begin
+                  if (Monto > X) then
+                     ImporteFinal := Monto * 0.95;
+                  Writeln('Monto a pagar en accesorios es: ', ImporteFinal:8:2);
+                  Descuento := Descuento + (Monto - ImporteFinal);
+                  end;
+             end;
+        if (Monto > MontoMaximo) then
+           begin
+           MontoMaximo := Monto;
+           CodigoMaximo := Codigo;
+           end;
+        end;
+
+    Writeln('Total de operaciones realizadas en venta libre: ', ContadorLibre);
+    Writeln('Importe total en venta libre: ', TotalLibre:8:2);
+    Writeln('Importe total bonificado en descuentos es: ', Descuento:8:2);
+    Writeln(MontoMaximo:8:2, CodigoMaximo);
+
+    Close(Arch);
+    Readln();
+End.
+```
