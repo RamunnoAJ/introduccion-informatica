@@ -658,9 +658,9 @@ End.
 > | Menos de 40km/h       | C         |
 >
 > Como modificaría el código si se pidiera además
-> a. Promedio de velocidades máximas
-> b. Cantidad de corredores de categoría A con nivel de riesgo 1
-> c. Informar categorías sin participantes 
+> 1. Promedio de velocidades máximas
+> 2. Cantidad de corredores de categoría A con nivel de riesgo 1
+> 3. Informar categorías sin participantes 
 
 
 ### Solución
