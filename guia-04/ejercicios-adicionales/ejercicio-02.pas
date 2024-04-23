@@ -10,12 +10,14 @@ Begin
 
     ContGratis := 0; ContDescuento := 0;
 
-    while (Horas <> 0) then
+    while (Horas <> 0) do
     begin
         Repeat
             Writeln('Ingrese el día (1-30)');
             Readln(Dia);
         until (Dia >= 1) AND (Dia <= 30);
+
+        Monto := PrecioPorHora * Horas;
 
         if (Monto > 20) then
             if (Monto <= 50) then
@@ -37,13 +39,17 @@ Begin
                             else
                                 begin
                                 Monto := Monto - 8;
-                                ContDescuento := ContDescuento +1;
+                                ContDescuento := ContDescuento + 1;
                                 end;
 
-        Monto := PrecioPorHora * Horas;
+        Writeln(Monto:8:2);
 
-        Writeln(Monto);
+        Writeln('Ingrese otra cantidad de horas o fin de datos (0)');
+        Readln(Horas);
     end;
+
+    Writeln('Hay ', ContDescuento, ' pago/s con descuento.');
+    Writeln('Hay ', ContGratis, ' pago/s que no pagaron.');
 
     Readln();
 End.
