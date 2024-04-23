@@ -48,8 +48,8 @@ Begin
         Readln(Horas);
     end;
 
-    Writeln('Hay ', ContDescuento, ' pago/s con descuento.');
-    Writeln('Hay ', ContGratis, ' pago/s que no pagaron.');
+    Writeln('Hay ', ContDescuento, ' auto/s que pagaron con descuento.');
+    Writeln('Hay ', ContGratis, ' auto/s que no pagaron.');
 
     Readln();
 End.
