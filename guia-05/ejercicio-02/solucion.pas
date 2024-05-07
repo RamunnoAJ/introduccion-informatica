@@ -1,16 +1,17 @@
 program ejercicio;
 Function CalcFactorial(a: integer): integer;
 var
-    i: integer;
+    i, Acum: integer;
 begin
+     Acum := 1;
      if (a = 0) then
         CalcFactorial := 1
      else
      begin
-          for i := a downto 2 do
-              a := a * (i - 1);
+          for i := a downto 1 do
+              Acum := Acum * i;
 
-          CalcFactorial := a;
+          CalcFactorial := Acum;
      end;
 end;
 Var
