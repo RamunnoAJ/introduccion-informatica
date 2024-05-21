@@ -1,0 +1,3 @@
+- Cada proceso (lectura, escritura, cálculo) debe ser implementada mediante un procedimiento o función, según corresponda, correctamente parametrizada. No utilizar variables globales.
+- Aunque no se explicite, informar siempre los resultados obtenidos.
+- Antes de comenzar a hacer el algoritmo arme un ejemplo y resuelva manualmente.
