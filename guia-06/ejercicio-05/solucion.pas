@@ -68,6 +68,18 @@ begin
     else
         CalcularPromedio := 0;
 end;
+Procedure Menu(Var Op: char);
+begin
+    Writeln('Menú de opciones');
+    Writeln('1) Precio mínimo de x año');
+    Writeln('2) Cantidad de autos con precio menor a x');
+    Writeln('3) Promedio de precios de autos entre años x e y');
+    Writeln('4) Fin');
+    Repeat
+        Write('Ingrese su opción: ');
+        Readln(Op);
+    Until ('1' <= Op) AND (Op <= '4' );
+end;
 Var
     VPatentes: VP;
     VAnios: VA;
@@ -75,26 +87,36 @@ Var
     N: byte;
     Anio, Anio1, Anio2: word;
     Minimo, Importe, Promedio: real;
+    Op: char;
 Begin
     Leer(VPatentes, VAnios, VImportes, N);
-    Writeln('Ingrese un año');
-    Readln(Anio);
-    Minimo := PrecioMinimo(Anio, VAnios, VImportes, N);
 
-    if (Minimo <> 10000) then
-        Writeln('El precio mínimo es: ', Minimo:8:2)
-    else
-        Writeln('No hay ningún auto con ese año.');
-
-    Writeln('Ingrese un importe');
-    Readln(Importe);
-    Writeln(MenoresPrecio(Importe, VImportes, N));
-
-    Writeln('Ingrese un rango de fechas [Anio1, Anio2]');
-    Readln(Anio1, Anio2);
-    Promedio := CalcularPromedio(Anio1, Anio2, VAnios, VImportes, N);
-    if (Promedio <> 0) then
-        Writeln('El promedio de precio de los autos de los años entre ', Anio1, ' y ', Anio2, ' es ', Promedio:8:2)
-    else
-        Writeln('No hay autos entre los años ', Anio1, ' y ', Anio2);
+    Repeat
+    Menu(Op);
+    case Op of
+    '1': begin
+            Writeln('Ingrese un año');
+            Readln(Anio);
+            Minimo := PrecioMinimo(Anio, VAnios, VImportes, N);
+            if (Minimo <> 10000) then
+                Writeln('El precio mínimo es: ', Minimo:8:2)
+            else
+                Writeln('No hay ningún auto con ese año.');
+        end;
+    '2': begin
+            Writeln('Ingrese un importe');
+            Readln(Importe);
+            Writeln(MenoresPrecio(Importe, VImportes, N));
+        end;
+    '3': begin
+            Writeln('Ingrese un rango de fechas [Anio1, Anio2]');
+            Readln(Anio1, Anio2);
+            Promedio := CalcularPromedio(Anio1, Anio2, VAnios, VImportes, N);
+            if (Promedio <> 0) then
+                Writeln('El promedio de precio de los autos de los años entre ', Anio1, ' y ', Anio2, ' es ', Promedio:8:2)
+            else
+                Writeln('No hay autos entre los años ', Anio1, ' y ', Anio2);
+        end;
+    end;
+    Until Op = '4';
 End.
