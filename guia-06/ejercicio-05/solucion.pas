@@ -93,10 +93,13 @@ Var
     i, Posicion: byte;
 begin
     Posicion := 0;
+    i := 1;
 
-    for i:= 1 to N do
-        if (Patente = VPatentes[i]) then
-            Posicion := i;
+    while (i <= N) AND (VPatentes[i] <> Patente) do
+        i := i + 1;
+
+    if (i <= N) then
+        Posicion := i;
 
     BuscarPosicion := Posicion;
 end;
@@ -157,13 +160,11 @@ Begin
             Posicion := BuscarPosicion(VPatentes, N, Patente);
             if (Posicion <> 0) then
             begin
-                Writeln('Año: ', VAnios[Posicion]);
-                Writeln('Precio: ', VImportes[Posicion]:8:2);
+                Writeln('Patente: ', VPatentes[Posicion], ' Año: ', VAnios[Posicion],' Precio: ', VImportes[Posicion]:8:2);
             end
             else
                 Writeln('No se encontró ningún auto con la patente ', Patente);
         end;
     end;
     Until Op = '5';
-
 End.
