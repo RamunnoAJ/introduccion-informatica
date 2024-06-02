@@ -82,7 +82,7 @@ begin
     Writeln('2) Cantidad de autos con precio menor a x');
     Writeln('3) Promedio de precios de autos entre años x e y');
     Writeln('4) Buscar un auto con una patente dada');
-    Writeln('4) Fin');
+    Writeln('5) Fin');
     Repeat
         Write('Ingrese su opción: ');
         Readln(Op);
