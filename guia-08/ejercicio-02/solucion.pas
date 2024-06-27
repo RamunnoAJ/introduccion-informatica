@@ -53,10 +53,8 @@ begin
     Cont := 0;
 
     for i := 1 to N do
-    begin
         with Atletas[i] do
             Cont := Cont + SuperoPrimerLanzamiento(L1, L2);
-    end;
 
     ObtenerCantidadSuperoL1 := Cont;
 end;
@@ -68,7 +66,6 @@ begin
     Max := 0;
 
     for i := 1 to N do
-    begin
         with Atletas[i] do
         begin
             if (L1 > Max) then
@@ -76,7 +73,6 @@ begin
             if (L2 > Max) then
                 Max := L2;
         end;
-    end;
 
     ObtenerMejorMarca := Max;
 end;
