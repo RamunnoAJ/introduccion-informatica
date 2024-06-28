@@ -1,0 +1,136 @@
+program parcial;
+Type
+    ST9 = string[9];   // CORRECTO
+    TMat = Array[1..50, 1..5] of byte;  // CORRECTO
+    TVec = Array[1..5] of byte;        // CORRECTO
+    TVDias = Array[1..5] of ST9;       // CORRECTO
+Const
+     Dias: TVDias = ('Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes');     // CORRECTO
+Procedure Leer(Var Prendas: TMat; Var Objetivos: TVec; Var N: byte);     // CORRECTO
+var
+   Arch: text;
+   i, j: byte;
+begin
+     Assign(Arch, 'Produccion.txt');
+     Reset(Arch);
+
+     Readln(Arch, N);
+     for i := 1 to N do
+     begin   //INNECESARIO
+         for j := 1 to 5 do
+             Read(Arch, Prendas[i, j]);
+     end;
+
+     for j := 1 to 5 do
+         Read(Arch, Objetivos[j]);
+
+     Close(Arch);
+end;
+Procedure EscribirMatriz(Prendas: TMat; N: byte);        // CORRECTO
+var
+   i, j: byte;
+begin
+     for i := 1 to N do
+     begin
+         for j := 1 to 5 do
+             Write(Prendas[i, j]:3);
+         Writeln();
+     end;
+end;
+
+Procedure EscribirVector(Objetivos: TVec);    // CORRECTO
+var
+   j: byte;
+begin
+     for j := 1 to 5 do
+         Write(Objetivos[j]:3);
+     Writeln();
+end;
+
+Function ObtenerCantidadMinima(Prendas: TMat; N, Dia: byte): byte;  // PODRIA TAMBIÉN DEVOLVERSE LA POSICIÓN I
+var
+   i, Min: byte;
+begin
+     Min := Prendas[1, Dia];
+     for i := 2 to N do
+         if (Prendas[i, Dia] < Min) then
+            Min := Prendas[i, Dia];
+
+     ObtenerCantidadMinima := Min;
+end;
+
+Procedure RestarPrendas(Var Prendas: TMat; N, X, Y, P: byte);
+begin
+     if (Prendas[X, Y] < P) then
+        Writeln('No puedes restar mas prendas de las que hay')
+     else
+         Prendas[X, Y] := Prendas[X, Y] - P;
+
+     EscribirMatriz(Prendas, N); // NO ES NECESARIO MOSTRARLO DENTRO DEL PROCEDIMIENTO, SE PODRIA LLAMAR EN EL PP
+end;
+
+Function CumplioObjetivo(Prendas: TMat; Objetivos: TVec; N, Dia: byte): byte; // NO ES NECESARIO PASAR TODO EL VECTOR, UNICAMENTE EL VECTOR EN POSICIÓN DIA
+var
+   Cont, i: byte;
+begin
+     Cont := 0;
+     i := 0;   // DEBE EMPEZAR DESDE 1 YA QUE NO HAY POSICIÓN 0
+
+     while (i < N) AND (Cont = 0) do   // NO HACE FALTA USAR BANDERAS
+     begin
+         i := i + 1;
+         if (Prendas[i, Dia] < Objetivos[Dia]) then  // LO IDEAL SERIA HACER UNA FUNCIÓN QUE VERIFIQUE Y OTRA QUE CUENTE LOS QUE CUMPLEN
+            Cont := 1;
+     end;
+
+     CumplioObjetivo := Cont;
+end;
+
+Var
+   Prendas: TMat;
+   Objetivos: TVec;
+   N, Dia, Min, X, Y, P, j, ContDiasNoCumplidos: byte;
+begin
+     Leer(Prendas, Objetivos, N);
+     EscribirMatriz(Prendas, N);
+     EscribirVector(Objetivos);
+
+     Writeln('Ingrese un dia de la semana (1 a 5)');
+     Readln(Dia);   // FALTA VALIDAR
+     Min := ObtenerCantidadMinima(Prendas, N, Dia);
+     Writeln(Dias[Dia], ' con ', Min, ' prendas');
+
+     Repeat
+           Writeln('Ingrese una maquina X y un dia Y');
+           Readln(X, Y);
+     until (X <= 5) AND (Y <= N); // LA VALIDACIÓN SERIA CON LAS CONDICIONES AL REVÉS, SON N MÁQUINAS Y 5 DIAS
+     Repeat
+           Writeln('Ingrese una cantidad P de prendas a restar');
+           Readln(P);
+     until (P > 0);
+
+     RestarPrendas(Prendas, N, X, Y, P);
+
+     ContDiasNoCumplidos := 0;
+     for j := 1 to 5 do      // DEBERIA SER UNA FUNCIÓN QUE CUENTE
+         ContDiasNoCumplidos := ContDiasNoCumplidos + CumplioObjetivo(Prendas, Objetivos, N ,j);
+
+     Writeln(ContDiasNoCumplidos, ' dias');
+
+     Readln();
+end.
+
+// DEVOLUCIÓN
+
+// EL PROGRAMA NO TIENE ERRRORES DE COMPILACIÓN
+// EL PROGRAMA SE EJECUTA CORRECTAMENTE
+// LA LECTURA DE ARCHIVO ES CORRECTA
+// LOS CICLOS ANIDADOS SON CORRECTOS
+// LOS RESULTADOS MOSTRADOS SON CORRECTOS
+// LA MODULARIZACIÒN ES PARCIALMENTE CORRECTA
+// PUNTO A)CORRECTO, PERO FALTA VALIDAR EL DIA
+// PUNTO B)CORRECTO, PERO MAL VALIDADOS LOS DATOS INGRESADOS
+// PUNTO C)CORRECTO, PERO INEFICIENTE, DEBERÍAN SER DOS FUNCIONES Y NO USAR BANDERA
+// LA INDENTACIÓN ES ORRECTA
+// LA DECLARACIÓN DE VARIABLES ES CORRECTA
+
