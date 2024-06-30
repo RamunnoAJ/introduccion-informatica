@@ -86,10 +86,26 @@ begin
 
     ObtenerPorNombre := i;
 end;
+Procedure GenerarNuevoArreglo(Atletas: TVAtletas; N: byte; Marca: real; Var NuevoArreglo: TVAtletas; Var M: byte);
+var
+    i: byte;
+begin
+    M := 0;
+    for i := 1 to N do
+        with Atletas[i] do
+        begin
+            if (L1 > Marca) OR (L2 > Marca) then
+            begin
+                M := M + 1;
+                NuevoArreglo[M] := Atletas[i];
+            end;
+        end;
+end;
 Var
-    Atletas: TVAtletas;
-    N, PosObtenido: byte;
+    Atletas, NuevoArreglo: TVAtletas;
+    N, M, PosObtenido: byte;
     Nombre: ST10;
+    Marca: real;
 Begin
     Leer(Atletas, N);
     EscribirAtletas(Atletas, N);
@@ -107,4 +123,13 @@ Begin
         end
     else
         Writeln('No se encontro el atleta ', Nombre);
+
+    Repeat
+        Writeln('Ingrese una marca a superar');
+        Readln(Marca);
+    Until Marca > 0;
+    GenerarNuevoArreglo(Atletas, N, Marca, NuevoArreglo, M);
+    EscribirAtletas(Atletas, N);
+    Writeln('Los atletas que superaron la marca fueron: ');
+    EscribirAtletas(NuevoArreglo, M);
 End.
